@@ -1,6 +1,8 @@
 #ifndef __CFGLIB_H__
 #define __CFGLIB_H__
 
+#include <cryptlib.h>
+
 struct sensor_info {
 	uint16_t id;
 	at_ac_tuwien_iot1718_N2C_SensorType type;
@@ -20,7 +22,7 @@ struct rfnode_config {
 	uint8_t channel;
 	uint8_t delay;
 	uint8_t retransmits;
-	const uint8_t *auth_key;
+	const uint8_t auth_key[CRYPTLIB_KEY_SIZE];
 	const struct sensor_info *const *sensors; 
 } __attribute__((packed));
 
