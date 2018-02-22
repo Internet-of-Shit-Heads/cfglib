@@ -58,20 +58,16 @@ struct coordinator_config {
 	debug_level debug;
 } __attribute__((packed));
 
-#ifdef COORDINATOR
-	extern struct coordinator_config current_cfg;
-#else
-	extern const struct sensor_info *const available_sensors[];
-#	define N_SENSORS (sizeof(available_sensors) / sizeof(struct sensor_info *))
-
-	extern struct rfnode_config current_cfg;
+#define GET_DEF_STR(x) #x
+#ifndef COORDINATOR
+#	define CFG_N_SENSORS (sizeof(GET_DEF_STR(CFG_SENSORS)) / sizeof(struct sensor_info *))
 #endif
 
 #ifdef DEBUG_HARD_OFF
 #	define DO_DEBUG(lvl)	if (0)
 #	define DO_DEBUG_AVAIL	if (0)
 #else
-#	define DO_DEBUG(lvl)	if (current_cfg.debug >= (lvl))
+#	define DO_DEBUG(lvl)	if (GET_DEF_STR(CFG_CURRENT).debug >= (lvl))
 #	define DO_DEBUG_AVAIL	if (1)
 #endif
 
