@@ -69,8 +69,10 @@ struct coordinator_config {
 
 #ifdef DEBUG_HARD_OFF
 #	define DO_DEBUG(lvl)	if (0)
+#	define DO_DEBUG_AVAIL	if (0)
 #else
 #	define DO_DEBUG(lvl)	if (current_cfg.debug >= (lvl))
+#	define DO_DEBUG_AVAIL	if (1)
 #endif
 
 #endif /* __CFGLIB_H__ */
