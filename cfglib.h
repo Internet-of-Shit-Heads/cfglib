@@ -58,7 +58,7 @@ struct coordinator_config {
 	debug_level debug;
 } __attribute__((packed));
 
-#define GET_DEF_STR(x) #x
+#define GET_DEF_STR(x) x
 #ifndef COORDINATOR
 #	define CFG_N_SENSORS (sizeof(GET_DEF_STR(CFG_SENSORS)) / sizeof(struct sensor_info *))
 #endif
