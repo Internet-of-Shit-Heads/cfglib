@@ -42,7 +42,16 @@ struct rfnode_config {
 } __attribute__((packed));
 
 struct coordinator_config {
-	/* operations */
+	/* mqtt */
+  char* mqtt_server;
+  char* mqtt_user;
+  char* mqtt_password;
+  char* mqtt_topic_timestamp;
+  char* mqtt_topic_update_interval;
+  uint32_t mqtt_port;
+  /* wifi */
+  char* wifi_ssid;
+  char* wifi_password;
 	/* communications */
 	uint64_t address;
 	uint8_t channel;
@@ -56,7 +65,7 @@ struct coordinator_config {
 	/* debug */
 	unsigned int baud_rate;
 	debug_level debug;
-} __attribute__((packed));
+};
 
 #define GET_DEF_STR(x) x
 #ifndef COORDINATOR
